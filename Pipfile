@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 django = "==1.11.7"
 pillow = "*"
+pymysql = "*"
 
 [requires]
 python_version = "3.7"
