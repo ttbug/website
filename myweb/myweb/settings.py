@@ -132,5 +132,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# 上传的图片存放位置
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace("\\", "/")
 MEDIA_URL = '/media/'

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 # Create your models here.
 
 class Category(models.Model):
@@ -42,6 +43,14 @@ class Entry(models.Model):
 
     def __str__(self):
         return self.title
+
+    # 生成一篇文章的url
+    def get_absolute_url(self):
+        return reverse('blog:blog_detail', kwargs={'blog_id':self.id})
+
+    def increase_visiting(self):
+        self.visting += 1
+        self.save(update_fields=['visting'])
 
     class Meta:
         # 创建时间反序排列

@@ -3,5 +3,28 @@
 {% block title %}博客首页{% endblock %}
 
 {% block content %}
-<h1>博客首页</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            {% for entry in entrys %}
+            <hr>
+            <h2><a href="{{ entry.get_absolute_url}}">{{ entry.title }}</a></h2>
+            {% if entry.img %}
+            <img src="{{entry.img.url}}" alt="" width="50%">
+            {%endif%}
+            {% if entry.abstract %}
+            <p>{{ entry.abstract }}</p>
+            {% else %}
+            <p>{{ entry.body | truncatechars:128}}</p>
+            {% endif %}
+            <p>
+                <span>作者：{{entry.author }}</span>
+                <span>&nbsp;&nbsp;发表时间：{{entry.created_time}}</span>
+                <span>&nbsp;&nbsp;浏览量：{{entry.visting}}</span>
+            </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
